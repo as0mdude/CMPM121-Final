@@ -3,7 +3,7 @@ using UnityEngine;
 public class GridManager : MonoBehaviour
 {
     public GameObject tilePrefab; // Assign a tile prefab with a SpriteRenderer in Unity
-    public int rows = 5;
+    public int rows = 10;
     public int cols = 5;
     public float tileSize = 1.0f;
 
@@ -23,5 +23,7 @@ public class GridManager : MonoBehaviour
                 tile.name = $"Tile {x},{y}";
             }
         }
+
+        
     }
 }
