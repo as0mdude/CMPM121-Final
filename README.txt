@@ -1,6 +1,5 @@
-# README: Reap and Sow Game Development  
+# Reap and Sow Game Development  
 By Team 21
-
 
 ## Setting Up the Project  
 1. Download and install **Unity Hub** if you haven’t already.  
