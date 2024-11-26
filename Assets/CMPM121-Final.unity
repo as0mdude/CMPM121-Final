@@ -443,6 +443,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5022887701574057488, guid: 0cdf384e7c4d0b143b39509c3bbca138, type: 3}
   m_PrefabInstance: {fileID: 1251932668}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &662512021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 662512023}
+  - component: {fileID: 662512022}
+  m_Layer: 0
+  m_Name: turnmanagerobj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &662512022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662512021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 923306d6fc514ef44b8c55a52c9efb26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWidth: 10
+  gridHeight: 5
+  targetPlantLevel: 3
+  requiredPlantCount: 5
+--- !u!4 &662512023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 662512021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9762381, y: 1.1726167, z: -0.013677904}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1181014311
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +502,7 @@ GameObject:
   - component: {fileID: 1181014314}
   - component: {fileID: 1181014313}
   - component: {fileID: 1181014312}
+  - component: {fileID: 1181014315}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -542,6 +591,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1181014315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181014311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8821b41840b05454ca27b13a3456a49b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turnManager: {fileID: 662512022}
+  grassSprite: {fileID: -2123335810, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  shrubSprite: {fileID: 1494164551, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  treeSprite: {fileID: -1186976874, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  gridSize: {x: 1, y: 1}
+  placementRange: 1
 --- !u!1001 &1251932668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -808,7 +875,7 @@ GameObject:
   - component: {fileID: 1926739979}
   - component: {fileID: 1926739978}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: gridmanagerobj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

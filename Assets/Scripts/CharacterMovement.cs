@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 targetPosition += Vector2.up * gridSize.y;
                 currentY += 1; // Increment Y for upward movement
-                printCoordinates();
+                //printCoordinates();
             }
            
         }
@@ -38,7 +38,7 @@ public class CharacterMovement : MonoBehaviour
             {
                 targetPosition += Vector2.down * gridSize.y;
                 currentY -= 1; // Decrement Y for downward movement
-                printCoordinates();
+                //printCoordinates();
             }
             
         }
@@ -48,7 +48,7 @@ public class CharacterMovement : MonoBehaviour
             {
                  targetPosition += Vector2.left * gridSize.x;
                 currentX -= 1; // Decrement X for left movement
-                printCoordinates();
+                //printCoordinates();
             }
            
         }
@@ -58,7 +58,7 @@ public class CharacterMovement : MonoBehaviour
             {
                  targetPosition += Vector2.right * gridSize.x;
                 currentX += 1; // Increment X for right movement
-                printCoordinates();
+                //printCoordinates();
             }
            
         }

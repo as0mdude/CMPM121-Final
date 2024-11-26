@@ -16,6 +16,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
         protected Sprite[] stageSprites;
         private bool spritesLoaded;
 
+        
         // Constructor
         public Plant(){
             gridLocation = new Dictionary<string, int>();
