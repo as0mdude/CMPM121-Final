@@ -7,6 +7,9 @@ public class ReapSow : MonoBehaviour
     public Sprite grassSprite;
     public Sprite shrubSprite;
     public Sprite treeSprite;
+    // New sprite for the flower stage
+    public Sprite flowerSprite;
+
     public Vector2 gridSize = new Vector2(1f, 1f);
     public float placementRange = 1f;
 
@@ -176,6 +179,9 @@ public class ReapSow : MonoBehaviour
                 return shrubSprite;
             case TurnManager.PlantGrowthStage.Tree:
                 return treeSprite;
+            // Add new Flower stage
+            case TurnManager.PlantGrowthStage.Flower:
+                return flowerSprite;
             default:
                 return grassSprite;
         }

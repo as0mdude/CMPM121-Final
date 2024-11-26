@@ -4,11 +4,12 @@ using System.Collections.Generic;
 
 public class TurnManager : MonoBehaviour
 {
-    // Enum for plant growth stages
+    // Updated enum to include Flower stage
     public enum PlantGrowthStage
     {
         Grass,
         Shrub,
+        Flower,  // New stage added
         Tree
     }
 
@@ -132,6 +133,9 @@ public class TurnManager : MonoBehaviour
                 plant.currentStage = PlantGrowthStage.Shrub;
                 break;
             case PlantGrowthStage.Shrub:
+                plant.currentStage = PlantGrowthStage.Flower;  // Now goes to Flower stage
+                break;
+            case PlantGrowthStage.Flower:
                 plant.currentStage = PlantGrowthStage.Tree;
                 break;
             case PlantGrowthStage.Tree:
