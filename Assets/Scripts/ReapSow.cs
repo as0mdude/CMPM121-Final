@@ -4,9 +4,6 @@ using UnityEngine;
 public class ReapSow : MonoBehaviour
 {
     public TurnManager turnManager;
-    public Sprite grassSprite;
-    public Sprite shrubSprite;
-    public Sprite treeSprite;
     public Vector2 gridSize = new Vector2(1f, 1f);
     public float placementRange = 1f;
 
@@ -151,7 +148,7 @@ public class ReapSow : MonoBehaviour
         
         // Add a SpriteRenderer and assign the sprite (starts as grass)
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = grassSprite;
+        spriteRenderer.sprite = PlantSwitch.currentSprites[0];
 
         // Add a Collider2D for click detection
         newObject.AddComponent<BoxCollider2D>();
@@ -171,13 +168,13 @@ public class ReapSow : MonoBehaviour
         switch (stage)
         {
             case TurnManager.PlantGrowthStage.Grass:
-                return grassSprite;
+                return PlantSwitch.currentSprites[0]; ;
             case TurnManager.PlantGrowthStage.Shrub:
-                return shrubSprite;
+                return PlantSwitch.currentSprites[1]; ;
             case TurnManager.PlantGrowthStage.Tree:
-                return treeSprite;
+                return PlantSwitch.currentSprites[2]; ;
             default:
-                return grassSprite;
+                return PlantSwitch.currentSprites[0]; ;
         }
     }
 }

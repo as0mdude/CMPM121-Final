@@ -27,8 +27,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
             sunLevel = 0;
             plantStage = 1;
             plantID = -11111; // The only plantID with this ID should be the "Parent", PlantObject
-
-            stageSprites = stageSprites;
             tilesetPath = "Assets/Sprites/GRASS+.png";
             spritesLoaded = false;
         }

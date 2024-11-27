@@ -474,8 +474,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridWidth: 10
   gridHeight: 5
-  targetPlantLevel: 3
-  requiredPlantCount: 5
+  turnsToAdvanceStage: 3
+  minSunRequirement: 5
+  minWaterRequirement: 2
 --- !u!4 &662512023
 Transform:
   m_ObjectHideFlags: 0
@@ -503,6 +504,7 @@ GameObject:
   - component: {fileID: 1181014313}
   - component: {fileID: 1181014312}
   - component: {fileID: 1181014315}
+  - component: {fileID: 1181014316}
   m_Layer: 0
   m_Name: character
   m_TagString: Untagged
@@ -604,11 +606,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnManager: {fileID: 662512022}
-  grassSprite: {fileID: -2123335810, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
-  shrubSprite: {fileID: 1494164551, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
-  treeSprite: {fileID: -1186976874, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
   gridSize: {x: 1, y: 1}
   placementRange: 1
+  maxPlantsPerTurn: 3
+  currentPlantsThisTurn: 0
+  currentTurn: 0
+  sowedPlants: 0
+--- !u!114 &1181014316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181014311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fba5195a07586e46b649ecf95281934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grass1: {fileID: -2123335810, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  shrub1: {fileID: 606144030, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  tree1: {fileID: -1186976874, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  grass2: {fileID: -1045961354, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  shrub2: {fileID: 1332983130, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  tree2: {fileID: 1666484119, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  grass3: {fileID: 98398909, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  shrub3: {fileID: -1031570392, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
+  tree3: {fileID: -1580935650, guid: 4a49818293dee0746ae1f488418e2b10, type: 3}
 --- !u!1001 &1251932668
 PrefabInstance:
   m_ObjectHideFlags: 0
