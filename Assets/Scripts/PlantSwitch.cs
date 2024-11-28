@@ -21,6 +21,7 @@ public class PlantSwitch : MonoBehaviour
         shrubSprites = new List<Sprite> { shrub1, shrub2, shrub3 };
         treeSprites = new List<Sprite> { tree1, tree2, tree3 };
 
+        // Default to the first set
         currentSprites = grassSprites;
     }
 
@@ -41,8 +42,12 @@ public class PlantSwitch : MonoBehaviour
         }
     }
 
-    void UpdateGlobalSprites(int index)
+    public static void UpdateGlobalSprites(int index)
     {
+        // Update the current sprite set for new plants
         currentSprites = new List<Sprite> { grassSprites[index], shrubSprites[index], treeSprites[index] };
+
+        // Only affects new plants — existing plants retain their sprite set index
+        Debug.Log($"Current sprite set updated to index: {index}");
     }
 }

@@ -15,7 +15,6 @@ using UnityEngine.ResourceManagement.AsyncOperations;
         private int plantID;
         protected Sprite[] stageSprites;
         private bool spritesLoaded;
-
         
         // Constructor
         public Plant(){

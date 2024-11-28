@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 
 public class ReapSow : MonoBehaviour
@@ -53,34 +54,30 @@ public class ReapSow : MonoBehaviour
     }
 
     void UpdatePlantSprites()
+{
+    GameObject[] plantedObjects = GameObject.FindGameObjectsWithTag("Planted");
+    
+    foreach (GameObject plantObject in plantedObjects)
     {
-        // Find all planted objects and update their sprites based on the TurnManager's plant stage
-        GameObject[] plantedObjects = GameObject.FindGameObjectsWithTag("Planted");
-        
-        foreach (GameObject plantObject in plantedObjects)
+        string[] coords = plantObject.name.Split('_');
+        if (coords.Length >= 3)
         {
-            // Extract coordinates from the object name
-            string[] coords = plantObject.name.Split('_');
-            if (coords.Length >= 3)
+            int x = int.Parse(coords[1]);
+            int y = int.Parse(coords[2]);
+            TurnManager.Plant gridPlant = FindPlantAtCoordinate(x, y);
+            
+            if (gridPlant != null)
             {
-                int x = int.Parse(coords[1]);
-                int y = int.Parse(coords[2]);
-
-                // Find the corresponding plant in the TurnManager's grid
-                TurnManager.Plant gridPlant = FindPlantAtCoordinate(x, y);
-                
-                if (gridPlant != null)
+                SpriteRenderer spriteRenderer = plantObject.GetComponent<SpriteRenderer>();
+                if (spriteRenderer != null)
                 {
-                    // Update sprite based on growth stage
-                    SpriteRenderer spriteRenderer = plantObject.GetComponent<SpriteRenderer>();
-                    if (spriteRenderer != null)
-                    {
-                        spriteRenderer.sprite = GetSpriteForGrowthStage(gridPlant.currentStage);
-                    }
+                    spriteRenderer.sprite = GetSpriteForGrowthStage(gridPlant.currentStage, gridPlant.spriteSetIndex);
                 }
             }
         }
     }
+}
+
 
     TurnManager.Plant FindPlantAtCoordinate(int x, int y)
     {
@@ -143,38 +140,33 @@ public class ReapSow : MonoBehaviour
 }
     void PlantNewPlant(int x, int y)
     {
-        // Create a new GameObject for the sprite
         GameObject newObject = new GameObject($"Plant_{x}_{y}");
-        
-        // Add a SpriteRenderer and assign the sprite (starts as grass)
         SpriteRenderer spriteRenderer = newObject.AddComponent<SpriteRenderer>();
-        spriteRenderer.sprite = PlantSwitch.currentSprites[0];
+        spriteRenderer.sprite = PlantSwitch.currentSprites[0]; // Always starts as grass
 
-        // Add a Collider2D for click detection
         newObject.AddComponent<BoxCollider2D>();
-
-        // Tag the object as "Planted"
         newObject.tag = "Planted";
-
-        // Set the position of the new object
         newObject.transform.position = new Vector2(x, y);
 
-        // Add plant to turn manager's grid (starts as grass stage)
-        turnManager.PlantInCell(x, y, TurnManager.PlantGrowthStage.Grass);
+        // Determine the index of the current sprite set
+        int spriteSetIndex = PlantSwitch.grassSprites.IndexOf(PlantSwitch.currentSprites[0]);
+
+        // Add plant to turn manager's grid
+        turnManager.PlantInCell(x, y, TurnManager.PlantGrowthStage.Grass, spriteSetIndex);
     }
 
-    Sprite GetSpriteForGrowthStage(TurnManager.PlantGrowthStage stage)
+    Sprite GetSpriteForGrowthStage(TurnManager.PlantGrowthStage stage, int spriteSetIndex)
     {
         switch (stage)
         {
             case TurnManager.PlantGrowthStage.Grass:
-                return PlantSwitch.currentSprites[0]; ;
+                return PlantSwitch.grassSprites[spriteSetIndex];
             case TurnManager.PlantGrowthStage.Shrub:
-                return PlantSwitch.currentSprites[1]; ;
+                return PlantSwitch.shrubSprites[spriteSetIndex];
             case TurnManager.PlantGrowthStage.Tree:
-                return PlantSwitch.currentSprites[2]; ;
+                return PlantSwitch.treeSprites[spriteSetIndex];
             default:
-                return PlantSwitch.currentSprites[0]; ;
+                return PlantSwitch.grassSprites[spriteSetIndex];
         }
     }
 }

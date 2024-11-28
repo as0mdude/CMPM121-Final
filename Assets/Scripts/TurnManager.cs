@@ -28,6 +28,7 @@ public class TurnManager : MonoBehaviour
         public int growthTurns; // Tracks turns in current stage
         public Vector2 position;
         public int turnsSinceLastGrowth; // Tracks unique growth rate for cell
+        public int spriteSetIndex; // Index to determine which sprite set to use (0, 1, or 2)
     }
 
     public int gridWidth = 10;
@@ -145,8 +146,6 @@ public class TurnManager : MonoBehaviour
         // Consume some resources
         cell.sunLevel = Mathf.Max(0, cell.sunLevel - 2f);
         cell.waterLevel = Mathf.Max(0, cell.waterLevel - 1f);
-
-        Debug.Log($"Plant at {plant.position} grew to {plant.currentStage}");
     }
 
     void CheckGameCompletion()
@@ -174,7 +173,7 @@ public class TurnManager : MonoBehaviour
         }
     }
 
-    public void PlantInCell(int x, int y, PlantGrowthStage stage = PlantGrowthStage.Grass)
+    public void PlantInCell(int x, int y, PlantGrowthStage stage = PlantGrowthStage.Grass, int spriteSetIndex = 0)
     {
         if (x >= 0 && x < gridWidth && y >= 0 && y < gridHeight)
         {
@@ -183,7 +182,8 @@ public class TurnManager : MonoBehaviour
                 currentStage = stage,
                 growthTurns = 0,
                 position = new Vector2(x, y),
-                turnsSinceLastGrowth = 0
+                turnsSinceLastGrowth = 0,
+                spriteSetIndex = spriteSetIndex // Assign sprite set here
             };
 
             grid[x, y].plantsInCell.Add(newPlant);
