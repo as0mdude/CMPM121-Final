@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class ReapSow : MonoBehaviour
 {
     public TurnManager turnManager;
+
     public Vector2 gridSize = new Vector2(1f, 1f);
     public float placementRange = 1f;
 
@@ -15,6 +16,7 @@ public class ReapSow : MonoBehaviour
     public int currentTurn= 0;
 
     public int sowedPlants = 0;
+    public Sprite flowerSprite;
 
     void Update()
     {
@@ -164,7 +166,12 @@ public class ReapSow : MonoBehaviour
             case TurnManager.PlantGrowthStage.Shrub:
                 return PlantSwitch.shrubSprites[spriteSetIndex];
             case TurnManager.PlantGrowthStage.Tree:
-                return PlantSwitch.treeSprites[spriteSetIndex];
+            
+                return treeSprite;
+            // Add new Flower stage
+            case TurnManager.PlantGrowthStage.Flower:
+                return flowerSprite;
+
             default:
                 return PlantSwitch.grassSprites[spriteSetIndex];
         }
