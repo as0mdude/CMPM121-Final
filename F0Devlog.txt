@@ -1,0 +1,13 @@
+How We Satisfied the Software Requirements
+Our game meets the F0 software requirements by allowing a character to move across a 2D grid and incorporating time control, which lets players progress the day by pressing “O.” 
+Plant growth occurs only as time advances, with players limited to sowing a maximum of three plants per day. 
+Players can reap and sow plants only within a one-block radius, excluding diagonal grids, where interaction is not allowed.
+Each grid cell features randomly generated sun and water levels that change daily, affecting the growth rate of plants in different cells. 
+Players can plant a variety of plants and switch their selected plant using a keybind. 
+As plants grow, they progress through three stages before becoming ready for harvest. Growth is dependent on the grid cell having sufficient sun and water levels, as well as enough nearby plants to support growth.
+The win condition is met when X (a configurable value) plants are successfully harvested.
+
+Reflection
+We realized that using the Unity engine was excessive for a game of this scope. 
+Setting up the engine on everyone’s systems and learning its intricacies took significantly more time than anticipated, delaying the start of actual coding for the game. 
+As a result, we are considering switching to Phaser for F1, as it aligns better with our team's collective experience and could streamline development.
